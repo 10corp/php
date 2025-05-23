@@ -1,0 +1,76 @@
+name: PHP CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DB_USER: root
+      DB_PASSWORD: password
+      APP_ENV: testing
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql, xdebug
+          coverage: xdebug
+
+      - name: Set error reporting
+        run: echo "error_reporting = E_ALL" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/error_reporting.ini
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Check PHPUnit configuration
+        shell: bash
+        run: |
+          if [ ! -f phpunit.xml ]; then
+            echo "phpunit.xml not found, creating a default one"
+            tee phpunit.xml > /dev/null <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd">
+  <testsuites>
+    <testsuite name="Default">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
+EOF
+          fi
+
+      - name: Run PHP linter
+        run: |
+          composer require --dev squizlabs/php_codesniffer
+          vendor/bin/phpcs --standard=PSR12 src/
+
+      - name: Run tests with coverage
+        run: vendor/bin/phpunit --coverage-text
+
+      - name: Check for security vulnerabilities
+        run: composer require --dev roave/security-advisories
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "Build failed. Add real notification system here."
