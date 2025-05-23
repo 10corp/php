@@ -2,7 +2,15 @@ name: PHP CI
 
 on:
   push:
+    branches:
+      - main
+      - master
+      - develop
   pull_request:
+    branches:
+      - main
+      - master
+      - develop
 
 jobs:
   build:
@@ -15,6 +23,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Debug event trigger
+        run: echo "Workflow triggered by ${{ github.event_name }} on branch ${{ github.ref_name }}"
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
