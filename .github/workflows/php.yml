@@ -48,6 +48,23 @@ jobs:
                     </testsuite>
                 </testsuites>
             </phpunit>
+                   - name: Check PHPUnit configuration
+         run: |
+           if [ ! -f phpunit.xml ]; then
+             echo "phpunit.xml not found, creating a default one"
+             cat > phpunit.xml <<EOL
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
+         colors="true">
+    <testsuites>
+        <testsuite name="Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+EOL
+           fi
             EOL
           fi
       - name: Run tests
