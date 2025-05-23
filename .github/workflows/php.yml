@@ -25,10 +25,11 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Check PHPUnit configuration
+      shell: bash
       run: |
         if [ ! -f phpunit.xml ]; then
           echo "phpunit.xml not found, creating a default one"
-          cat > phpunit.xml <<EOL
+          cat <<'EOL' > phpunit.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
