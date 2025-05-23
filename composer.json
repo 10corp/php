@@ -1,7 +1,6 @@
 {
     "name": "10corp/learn-php",
     "description": "A learning project for PHP",
-    "require已经是
     "require": {
         "php": "^8.4"
     },
