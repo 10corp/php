@@ -1,211 +1,386 @@
-Logical operators are used in programming to combine and evaluate conditions or expressions that result in either true or false. In PHP, the logical operators are "and", "or", "&&", and "||". They allow you to perform logical operations on boolean values or expressions.
+## PHP-তে লজিক্যাল অপারেটর: ভূমিকা
 
-Here's an explanation of the different logical operators and their behavior:
+### লজিক্যাল অপারেটর কী?
 
-1. And Operator (`and` or `&&`):
-   - Syntax: a and b or a && b
-   - Description: This operator returns true if both the conditions "a" and "b" are true. Otherwise, it returns false.
-   - Example: 
-     ```php
-     $x = 10;
-     $y = 5;
-     if ($x > 0 and $y > 0) {
-         echo "Both x and y are greater than 0";
-     } else {
-         echo "At least one of them is not greater than 0";
-     }
-     ```
-     In this example, since both conditions are true ($x is greater than 0 and $y is greater than 0), the output will be "Both x and y are greater than 0".
+লজিক্যাল অপারেটর হলো PHP-তে এমন অপারেটর যা দুই বা ততোধিক শর্ত (conditions) একত্রিত করে একটি সত্য (true) বা মিথ্যা (false) ফলাফল দেয়। এগুলো সাধারণত `if`, `while`, বা টার্নারি অপারেশনে জটিল শর্ত তৈরি করতে ব্যবহৃত হয়। আপনার `eat_out.php` কোডে আপনি ইতিমধ্যে `&&` এবং `||` ব্যবহার করেছেন, যেমন:
 
-2. Or Operator (`or` or `||`):
-   - Syntax: a or b or a || b
-   - Description: This operator returns true if at least one of the conditions "a" or "b" is true. If both conditions are false, it returns false.
-   - Example: 
-     ```php
-     $x = 10;
-     $y = 5;
-     if ($x > 0 or $y > 0) {
-         echo "At least one of x or y is greater than 0";
-     } else {
-         echo "Neither x nor y is greater than 0";
-     }
-     ```
-     In this example, since both conditions are true ($x is greater than 0 and $y is greater than 0), the output will be "At least one of x or y is greater than 0".
-
-3. Difference between `and`/`or` and `&&`/`||`:
-   The main difference between `and`/`or` and `&&`/`||` is their precedence. The `&&` and `||` operators have higher precedence than `and` and `or`. It means that `&&` and `||` are evaluated before `and` and `or`.
-
-   Example with `and`/`&&`:
-   ```php
-   $a = true;
-   $b = false;
-   $c = $a and $b;
-   echo $c; // Output: 1 (true)
-   ```
-   In this example, `$c` will be true because `$a` is true. The `and` operator has lower precedence, so `$a` is evaluated first, and then the result is combined with `$b` using `and`.
-
-   Example with `&&`:
-   ```php
-   $a = true;
-   $b = false;
-   $c = $a && $b;
-   echo $c; // Output: (empty, false)
-   ```
-   In this example, `$c` will be false because `&&` has higher precedence. It evaluates both `$a` and `$b` together.
-
-   The same difference applies to `or` and `||`. `||` has higher precedence than `or`.
-
-It's essential to use the appropriate logical operator based on your desired evaluation and precedence rules. In most cases, using `&&` and `||` is preferred over `and` and `or` because they have consistent behavior in different programming languages.
-
-Logical operators are used in programming to combine and evaluate conditions or expressions that result in either true or false. In PHP, the logical operators are "and", "or", "&&", and "||". They allow you to perform logical operations on boolean values or expressions.
-
-Here's an explanation of the different logical operators and their behavior:
-
-1. And Operator (`and` or `&&`):
-   - Syntax: a and b or a && b
-   - Description: This operator returns true if both the conditions "a" and "b" are true. Otherwise, it returns false.
-   - Example: 
-     ```php
-     $x = 10;
-     $y = 5;
-     if ($x > 0 and $y > 0) {
-         echo "Both x and y are greater than 0";
-     } else {
-         echo "At least one of them is not greater than 0";
-     }
-     ```
-     In this example, since both conditions are true ($x is greater than 0 and $y is greater than 0), the output will be "Both x and y are greater than 0".
-
-2. Or Operator (`or` or `||`):
-   - Syntax: a or b or a || b
-   - Description: This operator returns true if at least one of the conditions "a" or "b" is true. If both conditions are false, it returns false.
-   - Example: 
-     ```php
-     $x = 10;
-     $y = 5;
-     if ($x > 0 or $y > 0) {
-         echo "At least one of x or y is greater than 0";
-     } else {
-         echo "Neither x nor y is greater than 0";
-     }
-     ```
-     In this example, since both conditions are true ($x is greater than 0 and $y is greater than 0), the output will be "At least one of x or y is greater than 0".
-
-3. Difference between `and`/`or` and `&&`/`||`:
-   The main difference between `and`/`or` and `&&`/`||` is their precedence. The `&&` and `||` operators have higher precedence than `and` and `or`. It means that `&&` and `||` are evaluated before `and` and `or`.
-
-   Example with `and`/`&&`:
-   ```php
-   $a = true;
-   $b = false;
-   $c = $a and $b;
-   echo $c; // Output: 1 (true)
-   ```
-   In this example, `$c` will be true because `$a` is true. The `and` operator has lower precedence, so `$a` is evaluated first, and then the result is combined with `$b` using `and`.
-
-   Example with `&&`:
-   ```php
-   $a = true;
-   $b = false;
-   $c = $a && $b;
-   echo $c; // Output: (empty, false)
-   ```
-   In this example, `$c` will be false because `&&` has higher precedence. It evaluates both `$a` and `$b` together.
-
-   The same difference applies to `or` and `||`. `||` has higher precedence than `or`.
-
-It's essential to use the appropriate logical operator based on your desired evaluation and precedence rules. In most cases, using `&&` and `||` is preferred over `and` and `or` because they have consistent behavior in different programming languages.
-
-In PHP, there are two sets of logical operators for handling conditions: "and"/"or" and "&&"/"||". They serve the same purpose, but they have different precedence levels, which can lead to different evaluation results when used in combination with other expressions.
-
-1. "and"/"or" Operators:
-The "and" and "or" operators have lower precedence compared to "&&" and "||". When used in an expression, they evaluate the left-hand side first and then decide whether to evaluate the right-hand side based on the result of the left-hand side.
-
-Example:
 ```php
-$e = false or true; // Here, the assignment happens before the "or" operation.
-var_dump($e); // Output: bool(false)
-
-$e = false || true; // Here, the "||" operation is evaluated first, and then the assignment.
-var_dump($e); // Output: bool(true)
+if ($money > 300 && $friend_pays === true) { ... }
 ```
 
-2. "&&"/"||" Operators:
-The "&&" and "||" operators have higher precedence, and they are typically used in more complex expressions where you want to ensure certain conditions are met before evaluating others.
+### লজিক্যাল অপারেটরের প্রকার
 
-Example:
+PHP-তে প্রধান লজিক্যাল অপারেটরগুলো হলো:
+
+1.  **AND (&& বা and)**: সব শর্ত সত্য হলে ফলাফল সত্য।
+2.  **OR (|| বা or)**: যেকোনো একটি শর্ত সত্য হলে ফলাফল সত্য।
+3.  **NOT (!)**: শর্তের ফলাফল উল্টে দেয় (সত্যকে মিথ্যা, মিথ্যাকে সত্য)।
+4.  **XOR (xor)**: শুধুমাত্র একটি শর্ত সত্য হলে ফলাফল সত্য, উভয় সত্য বা মিথ্যা হলে মিথ্যা।
+
+### কেন লজিক্যাল অপারেটর শিখবেন?
+
+*   **জটিল শর্ত তৈরি**: আপনার `eat_out.php` এ `$money > 300 || $friend_pays === true` এর মতো শর্ত তৈরি করতে।
+*   **নিয়ন্ত্রণ প্রবাহ**: প্রোগ্রামের সিদ্ধান্ত গ্রহণ (decision-making) সহজ করে।
+*   **কোড দক্ষতা**: একাধিক শর্ত একত্রে চেক করে কোড সংক্ষিপ্ত করে।
+
+---
+
+## লজিক্যাল অপারেটরের বিস্তারিত ব্যাখ্যা
+
+নিচে প্রতিটি লজিক্যাল অপারেটরের ব্যাখ্যা, উদাহরণ, এবং আপনার `eat_out.php` প্রেক্ষাপটে ব্যবহার দেওয়া হলো।
+
+### 1\. AND (&& বা and)
+
+*   **ব্যাখ্যা**: সব শর্ত সত্য হলে ফলাফল সত্য। যদি একটিও মিথ্যা হয়, ফলাফল মিথ্যা।
+*   **সত্য/মিথ্যা টেবিল**:
+    
+    ```css
+    শর্ত ১    শর্ত ২    ফলাফল
+    true      true      true
+    true      false     false
+    false     true      false
+    false     false     false
+    ```
+    
+*   **উদাহরণ**:
+    
+    ```php
+    $age = 20;
+    $has_id = true;
+    if ($age >= 18 && $has_id === true) {
+        echo "ভোট দিতে পারবে!\n";
+    }
+    ```
+    
+    *   ফলাফল: `ভোট দিতে পারবে!` (কারণ উভয় শর্ত সত্য)।
+*   **eat\_out.php প্রেক্ষাপট**:
+    
+    ```php
+    $money = 400;
+    $people = 3;
+    if ($money > 300 && $people >= 2) {
+        echo "সবাই মিলে খেতে যাও!\n";
+    }
+    ```
+    
+    *   ফলাফল: `সবাই মিলে খেতে যাও!` (উভয় শর্ত সত্য)।
+
+### 2\. OR (|| বা or)
+
+*   **ব্যাখ্যা**: যেকোনো একটি শর্ত সত্য হলে ফলাফল সত্য। সব মিথ্যা হলে মিথ্যা।
+*   **সত্য/মিথ্যা টেবিল**:
+    
+    ```css
+    শর্ত ১    শর্ত ২    ফলাফল
+    true      true      true
+    true      false     true
+    false     true      true
+    false     false     false
+    ```
+    
+*   **উদাহরণ**:
+    
+    ```php
+    $day = "শনিবার";
+    $holiday = false;
+    if ($day == "শনিবার" || $holiday === true) {
+        echo "আজ ছুটি!\n";
+    }
+    ```
+    
+    *   ফলাফল: `আজ ছুটি!` (প্রথম শর্ত সত্য)।
+*   **eat\_out.php প্রেক্ষাপট**:
+    
+    ```php
+    $money = 400;
+    $friend_pays = false;
+    if ($money > 300 || $friend_pays === true) {
+        echo "খেতে যেতে পারবে!\n";
+    }
+    ```
+    
+    *   ফলাফল: `খেতে যেতে পারবে!` (প্রথম শর্ত সত্য)।
+
+### 3\. NOT (!)
+
+*   **ব্যাখ্যা**: শর্তের ফলাফল উল্টে দেয়। সত্য হলে মিথ্যা, মিথ্যা হলে সত্য।
+*   **সত্য/মিথ্যা টেবিল**:
+    
+    ```css
+    শর্ত      ফলাফল
+    true      false
+    false     true
+    ```
+    
+*   **উদাহরণ**:
+    
+    ```php
+    $is_raining = false;
+    if (!$is_raining) {
+        echo "বাইরে যাও!\n";
+    }
+    ```
+    
+    *   ফলাফল: `বাইরে যাও!` (কারণ `!false = true`)।
+*   **eat\_out.php প্রেক্ষাপট**:
+    
+    ```php
+    $busy = false;
+    if (!$busy) {
+        echo "খেতে যাওয়ার সময় আছে!\n";
+    }
+    ```
+    
+    *   ফলাফল: `খেতে যাওয়ার সময় আছে!`।
+
+### 4\. XOR (xor)
+
+*   **ব্যাখ্যা**: শুধুমাত্র একটি শর্ত সত্য হলে ফলাফল সত্য। উভয় সত্য বা মিথ্যা হলে মিথ্যা।
+*   **সত্য/মিথ্যা টেবিল**:
+    
+    ```css
+    শর্ত ১    শর্ত ২    ফলাফল
+    true      true      false
+    true      false     true
+    false     true      true
+    false     false     false
+    ```
+    
+*   **উদাহরণ**:
+    
+    ```php
+    $has_cash = true;
+    $has_card = false;
+    if ($has_cash xor $has_card) {
+        echo "একটি পেমেন্ট মেথড আছে!\n";
+    }
+    ```
+    
+    *   ফলাফল: `একটি পেমেন্ট মেথড আছে!` (শুধুমাত্র একটি সত্য)।
+*   **eat\_out.php প্রেক্ষাপট**:
+    
+    ```php
+    $money = 400;
+    $friend_pays = false;
+    if ($money > 300 xor $friend_pays === true) {
+        echo "শুধুমাত্র একটি শর্ত পূরণ হয়েছে: খেতে যাও!\n";
+    }
+    ```
+    
+    *   ফলাফল: `শুধুমাত্র একটি শর্ত পূরণ হয়েছে: খেতে যাও!` (শুধুমাত্র `$money > 300` সত্য)।
+
+---
+
+## টার্নারি অপারেশনের সাথে লজিক্যাল অপারেটর
+
+আপনি টার্নারি অপারেশন শিখেছেন, তাই লজিক্যাল অপারেটরগুলো টার্নারির সাথে কীভাবে ব্যবহার করা যায় তা দেখাই:
+
 ```php
-$e = false && true; // Here, the "&&" operation evaluates to false, so the assignment becomes false.
-var_dump($e); // Output: bool(false)
-
-$e = false or true; // Here, the "or" operation is evaluated first, and then the assignment.
-var_dump($e); // Output: bool(true)
+$money = 400;
+$friend_pays = true;
+$message = ($money > 300 && $friend_pays === true) ? "বন্ধুর সাথে খেতে যাও!" : "ঘরে থাক।";
+echo $message . "\n"; // আউটপুট: বন্ধুর সাথে খেতে যাও!
 ```
 
-To avoid confusion and ensure your code behaves as expected, it's generally recommended to use "&&" and "||" instead of "and" and "or" unless you have specific reasons to do otherwise. Using parentheses to clarify the order of operations can also help make your code more readable and less prone to unexpected behavior.
+---
 
-Example:
-```php
-$e = (false || true); // Explicitly using parentheses to control evaluation order.
-var_dump($e); // Output: bool(true)
+## সম্পূর্ণ কোড উদাহরণ
 
-$e = ($e = false) or true; // Using parentheses to clarify the intended evaluation order.
-var_dump($e); // Output: bool(true)
-```
-
-It's worth noting that the difference in evaluation behavior arises when you have complex expressions or multiple conditions combined together. For simple cases like the examples provided, the results will be the same for both sets of operators.
-
-Let's evaluate the expression step by step:
-
-1. Evaluate `$a && $b`: Since `$a` is true and `$b` is false, the result is false.
-
-2. Evaluate the first part of the `if` condition: `$a && $b || $c`
-   Since `&&` has higher precedence than `||`, the expression becomes `false || $c`.
-
-3. Evaluate `false || $c`: The result is true because one of the operands (`$c`) is true.
-
-4. Evaluate the second part of the `if` condition: `(!$c)`
-   The value of `!$c` is false since `!$c` means the negation of `$c`, and `$c` is true.
-
-5. Combine the results of both parts of the `if` condition: `true || false`
-   Since `||` (OR) returns true if at least one of the operands is true, the overall result is true.
-
-Therefore, the code will output "inside if". The final evaluation of the if condition is true, and the code block inside the `if` statement will be executed.
-
-Here's the PHP code with the output:
+নিচে একটি সম্পূর্ণ কোড দেওয়া হলো, যা সব লজিক্যাল অপারেটর (`&&`, `||`, `!`, `xor`) কভার করে, টার্নারি অপারেশন এবং আপনার `eat_out.php` প্রেক্ষাপটে (যেমন, `$money`, `$friend_pays`, `$activity`) সংযুক্ত করে। ফাইলটি `D:\laragon\www\php\conditions_practice\logical_operators` ফোল্ডারে `logical_operators.php` নামে সংরক্ষণ করুন।
 
 ```php
 <?php
-$a = true;
-$b = false;
-$c = true;
-if ($a && $b || $c || (!$c))
-    echo "inside if";
-else 
-    echo "inside else";
+// UTF-8 এনকোডিংয়ের জন্য
+header('Content-Type: text/html; charset=UTF-8');
 
-// Output: inside if
-```
+// ভ্যারিয়েবল ঘোষণা
+$money = 400;
+$friend_pays = true;
+$people = 3;
+$busy = false;
+$activity = "খাওয়া,দেখা";
 
-The result is as expected: "inside if".
+// ১. AND (&&)
+if ($money > 300 && $people >= 2) {
+    echo "AND: সবাই মিলে খেতে যাও!\n";
+}
 
-In the provided PHP code, the expression `$e = false and true;` will be evaluated, and the value of `$e` will be set accordingly.
+// ২. OR (||)
+if ($money > 300 || $friend_pays === true) {
+    echo "OR: খেতে যেতে পারবে!\n";
+}
 
-PHP has different operator precedence levels, and `and` has lower precedence than the assignment operator `=`. When using `and` in an expression, it's essential to use parentheses to ensure the correct evaluation order.
+// ৩. NOT (!)
+if (!$busy) {
+    echo "NOT: খেতে যাওয়ার সময় আছে!\n";
+}
 
-Let's break down the expression step by step:
+// ৪. XOR (xor)
+if ($money > 300 xor $friend_pays === true) {
+    echo "XOR: শুধুমাত্র একটি শর্ত পূরণ হয়েছে: খেতে যাও!\n";
+}
 
-1. Evaluate `false and true`: The `and` operator is used without parentheses. However, since `=` has higher precedence, the assignment happens first before evaluating the `and` operation.
+// টার্নারি এবং লজিক্যাল অপারেটর
+$message = ($money > 300 && $friend_pays === true) ? str_replace("খাওয়া", "খেতে", $activity) : "কোনো অ্যাকটিভিটি নেই।";
+echo "টার্নারি: $message\n";
 
-2. Assign the result of `false and true` to `$e`: The expression `false and true` evaluates to `false`, so the value of `$e` will be set to `false`.
+// টিকিট চেকার (পূর্বের কোডের সাথে)
+$ticket_price = 100;
+$tickets = intdiv($money, $ticket_price);
+$ticket_status = ($tickets >= 2 || $money % $ticket_price > 50) ? "কমপক্ষে $tickets টি টিকিট কিনতে পারবে!" : "টিকিট বা অবশিষ্ট টাকা কম।";
+echo "টিকিট স্ট্যাটাস: $ticket_status\n";
 
-Here's the PHP code with the result:
-
-```php
-<?php
-$e = false and true;
-var_dump($e); // Output: bool(false)
 ?>
 ```
 
-The value of `$e` will be `false`.
+---
+
+## কোড ব্যাখ্যা
+
+### প্রধান উপাদান
+
+*   **লজিক্যাল অপারেটর**: `&&`, `||`, `!`, `xor` প্রতিটি ব্যবহার দেখানো হয়েছে।
+*   **জটিল শর্ত**: `$money > 300 && $people >= 2`, `$money > 300 || $friend_pays === true` ইত্যাদি।
+*   **টার্নারি**: লজিক্যাল অপারেটরের সাথে টার্নারি ব্যবহার করে সংক্ষিপ্ত কোড।
+*   **স্ট্রিং ফাংশন**: `str_replace()` দিয়ে `eat_out.php` এর মতো অ্যাকটিভিটি হ্যান্ডেল।
+*   **ইন্টিজার**: `intdiv()` এবং `%` ব্যবহার করে টিকিট গণনা, আপনার “Numbers, Part 1: Integers” শিক্ষার সাথে সংযুক্ত।
+*   **UTF-8**: বাংলা টেক্সটের জন্য `header()` ব্যবহৃত।
+
+### আউটপুট
+
+টার্মিনালে চালালে:
+
+```css
+AND: সবাই মিলে খেতে যাও!
+OR: খেতে যেতে পারবে!
+NOT: খেতে যাওয়ার সময় আছে!
+টার্নারি: খেতে,দেখা
+টিকিট স্ট্যাটাস: কমপক্ষে 4 টি টিকিট কিনতে পারবে!
+```
+
+**নোট**: XOR শর্তটি এখানে মিথ্যা (কারণ `$money > 300` এবং `$friend_pays === true` উভয়ই সত্য), তাই এর আউটপুট হয়নি।
+
+---
+
+## টেস্টিং পদ্ধতি
+
+1.  **ফাইল সংরক্ষণ**:
+    *   কোডটি `logical_operators.php` নামে `D:\laragon\www\php\conditions_practice\logical_operators` ফোল্ডারে সংরক্ষণ করুন।
+    *   Notepad++-এ `Encoding` > `Encode in UTF-8` নিশ্চিত করুন।
+2.  **টার্মিনালে চালান**:
+    
+    ```css
+    cd D:\laragon\www\php\conditions_practice\logical_operators
+    php logical_operators.php
+    ```
+    
+3.  **ব্রাউজারে চালান**:
+    *   Laragon চালু করুন (`Start All`)।
+    *   URL:
+        *   `http://localhost/php/conditions_practice/logical_operators/logical_operators.php`
+        *   বা `https://php.co/conditions_practice/logical_operators/logical_operators.php` (SSL থাকলে)।
+    *   ব্রাউজারের জন্য `\n` এর পরিবর্তে `<br>` ব্যবহার করুন:
+        
+        ```php
+        echo "AND: সবাই মিলে খেতে যাও!<br>";
+        ```
+        
+4.  **পরিবর্তন করে টেস্ট**:
+    *   `$money = 200;` করে `AND` এবং `OR` শর্ত চেক করুন।
+    *   `$friend_pays = false;` করে `XOR` শর্ত টেস্ট করুন।
+    *   `$busy = true;` করে `NOT` শর্ত চেক করুন।
+    *   `$ticket_price = 150;` করে টিকিট স্ট্যাটাস চেক করুন।
+
+---
+
+## গুরুত্বপূর্ণ টিপস
+
+1.  **অপারেটর অগ্রাধিকার**:
+    *   `&&` এর অগ্রাধিকার `||` এর চেয়ে বেশি। বন্ধনী `()` ব্যবহার করুন:
+        
+        ```php
+        if (($money > 300 || $friend_pays) && $people >= 2) { ... }
+        ```
+        
+2.  **শর্ট-সার্কিট ইভালুয়েশন**:
+    *   `&&`: প্রথম শর্ত মিথ্যা হলে দ্বিতীয় শর্ত চেক হয় না।
+    *   `||`: প্রথম শর্ত সত্য হলে দ্বিতীয় শর্ত চেক হয় না।
+    *   উদাহরণ:
+        
+        ```php
+        if ($money > 300 || $people++ > 2) { ... } // $people বাড়বে না যদি $money > 300 সত্য হয়
+        ```
+        
+3.  **UTF-8**:
+    *   বাংলা টেক্সটের জন্য ফাইল UTF-8 এ সংরক্ষণ করুন।
+    *   `header('Content-Type: text/html; charset=UTF-8');` ব্যবহার করুন।
+4.  **ডিবাগিং**:
+    *   শর্তের ফলাফল চেক করুন:
+        
+        ```php
+        var_dump($money > 300 && $people >= 2);
+        echo "Tickets: $tickets\n";
+        ```
+        
+
+---
+
+## আপনার প্রেক্ষাপটে সংযোগ
+
+*   **eat\_out.php**: আপনার পূর্বের কোডে `$money > 300 && $friend_pays === true` এর মতো শর্ত ছিল। এই কোডে লজিক্যাল অপারেটর ব্যবহার করে একই লজিক প্রয়োগ করা হয়েছে।
+*   **ইন্টিজার**: `intdiv()` এবং `%` আপনার “Numbers, Part 1: Integers” শিক্ষার সাথে সম্পর্কিত।
+*   **টার্নারি**: টার্নারি অপারেশনের সাথে লজিক্যাল অপারেটর ব্যবহার আপনার শেখার ধারাবাহিকতা।
+*   **GitHub Repository**: আপনার ফাইল লিস্টে `Logical-Operators.md` আছে। `D:\laragon\www\php\Logical-Operators.md` পড়ুন বা কোড শেয়ার করুন। `10_Conditionals/` বা `06_Numbers/` এ সম্পর্কিত কোড থাকতে পারে।
+*   **Laragon**: `https://php.co` বা `http://localhost` দিয়ে টেস্ট করুন। SSL সমস্যা হলে `http://` ব্যবহার করুন।
+
+---
+
+## সম্ভাব্য সমস্যা ও সমাধান
+
+1.  **বাংলা টেক্সট ভুল**:
+    *   ফাইল UTF-8 এ সংরক্ষণ করুন (Notepad++: `Encoding > Encode in UTF-8`)।
+    *   `header()` যোগ করুন।
+2.  **শর্ত ভুল ফলাফল**:
+    *   শর্ত প্রিন্ট করুন:
+        
+        ```php
+        var_dump($money > 300 || $friend_pays === true);
+        ```
+        
+3.  **XOR বোঝা কঠিন**:
+    *   XOR শুধুমাত্র একটি শর্ত সত্য হলে কাজ করে। টেস্ট করুন:
+        
+        ```php
+        $a = true;
+        $b = false;
+        var_dump($a xor $b); // true
+        ```
+        
+4.  **Laragon URL সমস্যা**:
+    *   `http://localhost/phpinfo.php` চেক করুন।
+    *   Hosts ফাইলে `127.0.0.1 php.co` নিশ্চিত করুন।
+
+---
+
+## পরবর্তী ধাপ
+
+*   **অপারেটর অগ্রাধিকার**: আপনার ফাইল লিস্টে `PHP Operator Precedence and Associativity.md` আছে। এটি পড়ুন।
+*   **কাস্টম ফাংশন**: লজিক্যাল অপারেটর ব্যবহার করে ফাংশন তৈরি করুন:
+    
+    ```php
+    function canEatOut($money, $friend_pays, $people) {
+        return ($money > 300 || $friend_pays) && $people >= 2;
+    }
+    ```
+    
+*   **10\_Conditionals/**: `Logical-Operators.md` বা অন্য ফাইল চেক করুন।
+*   **লুপে লজিক্যাল অপারেটর**: `11_Loops/` ফোল্ডারে লুপ শিখুন এবং লজিক্যাল অপারেটর ব্যবহার করুন:
+    
+    ```php
+    while ($money > 0 && $tickets > 0) { ... }
+    ```
+    
+
+কোনো বিষয় বুঝতে সমস্যা হলে বা নতুন উদাহরণ চান, বলুন। `D:\laragon\www\php` থেকে অন্য ফাইল (যেমন, `Logical-Operators.md`, `10_Conditionals/`) শেয়ার করলে আমি ব্যাখ্যা করব। কোডে এরর হলে শেয়ার করুন, ঠিক করে দেব। 😊 কীভাবে আরও সাহায্য করতে পারি, বলুন!
+
+**নোট**: আজ শনিবার, ১৪ জুন ২০২৫, রাত ৯:০১ (বাংলাদেশ সময়)। আপনার কোডে `$day = "শনিবার"` ব্যবহার করতে চাইলে আমি এটি টেস্ট কেসে যোগ করতে পারি!
